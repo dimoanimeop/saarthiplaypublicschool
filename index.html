@@ -1,0 +1,993 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3157d5" />
+  <meta name="description" content="Saarthi Play Public School — school notices, homework, events, gallery and student information." />
+
+  <title>Saarthi Play Public School</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Real SVG icons -->
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <!-- Sidebar / mobile navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <img
+          src="schoollogo.jpeg"
+          alt="Saarthi Play Public School logo"
+          class="school-logo"
+          onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='grid';"
+        />
+        <div class="logo-fallback" id="logoFallback" style="display:none;">
+          <i data-lucide="school"></i>
+        </div>
+
+        <div class="brand-text">
+          <h1>Saarthi Play</h1>
+          <p>Public School</p>
+        </div>
+
+        <button class="icon-button sidebar-close" id="closeSidebar" aria-label="Close menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-label">MAIN MENU</div>
+
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-page="home">
+          <i data-lucide="house"></i>
+          <span>Home</span>
+        </button>
+
+        <button class="nav-item" data-page="notices">
+          <i data-lucide="megaphone"></i>
+          <span>Notice Board</span>
+          <span class="nav-count" id="noticeCount">0</span>
+        </button>
+
+        <button class="nav-item" data-page="homework">
+          <i data-lucide="book-open"></i>
+          <span>Homework</span>
+        </button>
+
+        <button class="nav-item" data-page="events">
+          <i data-lucide="calendar-days"></i>
+          <span>Events & Holidays</span>
+        </button>
+
+        <button class="nav-item" data-page="gallery">
+          <i data-lucide="images"></i>
+          <span>Photo Gallery</span>
+        </button>
+
+        <button class="nav-item" data-page="profile">
+          <i data-lucide="user-round"></i>
+          <span>Student Profile</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-label secondary-label">SCHOOL</div>
+
+      <nav class="side-nav" aria-label="School navigation">
+        <button class="nav-item" data-page="about">
+          <i data-lucide="info"></i>
+          <span>About School</span>
+        </button>
+
+        <button class="nav-item" data-page="contact">
+          <i data-lucide="phone"></i>
+          <span>Contact Us</span>
+        </button>
+
+        <button class="nav-item" data-page="admin">
+          <i data-lucide="shield-check"></i>
+          <span>Admin Dashboard</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">
+            <i data-lucide="headset"></i>
+          </div>
+          <h3>Need help?</h3>
+          <p>Contact the school office for assistance.</p>
+          <a href="tel:9818408808" class="help-link">
+            Call School Office <i data-lucide="arrow-up-right"></i>
+          </a>
+        </div>
+
+        <p class="sidebar-footer">Saarthi Play Public School</p>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+
+      <!-- Top bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button menu-button" id="openSidebar" aria-label="Open menu">
+            <i data-lucide="menu"></i>
+          </button>
+
+          <div class="breadcrumb">
+            <span>School Portal</span>
+            <i data-lucide="chevron-right"></i>
+            <strong id="currentPageName">Home</strong>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="icon-button notification-button" id="notificationButton" aria-label="View notifications">
+            <i data-lucide="bell"></i>
+            <span class="notification-dot"></span>
+          </button>
+
+          <button class="profile-chip" data-page="profile" aria-label="Open student profile">
+            <span class="avatar">
+              <i data-lucide="user-round"></i>
+            </span>
+            <span class="profile-chip-text">
+              <strong id="topStudentName">Student</strong>
+              <small id="topStudentClass">Student Portal</small>
+            </span>
+            <i data-lucide="chevron-down" class="profile-chevron"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Global search -->
+      <div class="search-row">
+        <div class="search-box">
+          <i data-lucide="search"></i>
+          <input
+            type="search"
+            id="globalSearch"
+            placeholder="Search notices, homework, events..."
+            aria-label="Search school information"
+          />
+          <kbd>Search</kbd>
+        </div>
+      </div>
+
+      <!-- HOME PAGE -->
+      <section class="page-section active" id="page-home" data-page-section="home">
+
+        <section class="welcome-banner">
+          <div class="welcome-content">
+            <span class="eyebrow">
+              <i data-lucide="graduation-cap"></i>
+              YOUR SCHOOL, ONE PLACE
+            </span>
+
+            <h2>Welcome to<br /><span>Saarthi Play Public School</span></h2>
+
+            <p>
+              Learn, grow and stay connected with your school community.
+              Find homework, important notices, events and more.
+            </p>
+
+            <div class="welcome-actions">
+              <button class="primary-button" data-page="notices">
+                View Notices <i data-lucide="arrow-right"></i>
+              </button>
+
+              <button class="banner-secondary-button" data-page="about">
+                Explore School
+              </button>
+            </div>
+          </div>
+
+          <div class="welcome-art" aria-hidden="true">
+            <div class="art-circle circle-one"></div>
+            <div class="art-circle circle-two"></div>
+            <div class="art-card art-card-one">
+              <i data-lucide="book-open"></i>
+            </div>
+            <div class="art-card art-card-two">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <div class="art-main-icon">
+              <i data-lucide="school"></i>
+            </div>
+            <div class="art-caption">
+              <i data-lucide="heart-handshake"></i>
+              Learning together
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick statistics -->
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">AT A GLANCE</span>
+            <h2>Your School Overview</h2>
+          </div>
+          <span class="updated-label">
+            <i data-lucide="calendar-check"></i>
+            School Portal
+          </span>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card stat-blue">
+            <div class="stat-top">
+              <span class="stat-icon"><i data-lucide="megaphone"></i></span>
+              <span class="stat-label">Announcements</span>
+            </div>
+            <strong class="stat-number" id="homeNoticeCount">0</strong>
+            <p>School notices available</p>
+            <button class="stat-link" data-page="notices">
+              View notices <i data-lucide="arrow-right"></i>
+            </button>
+          </article>
+
+          <article class="stat-card stat-purple">
+            <div class="stat-top">
+              <span class="stat-icon"><i data-lucide="book-open"></i></span>
+              <span class="stat-label">Homework</span>
+            </div>
+            <strong class="stat-number" id="homeHomeworkCount">0</strong>
+            <p>Homework assignments</p>
+            <button class="stat-link" data-page="homework">
+              View homework <i data-lucide="arrow-right"></i>
+            </button>
+          </article>
+
+          <article class="stat-card stat-orange">
+            <div class="stat-top">
+              <span class="stat-icon"><i data-lucide="calendar-days"></i></span>
+              <span class="stat-label">Upcoming Events</span>
+            </div>
+            <strong class="stat-number" id="homeEventCount">0</strong>
+            <p>Events and holidays</p>
+            <button class="stat-link" data-page="events">
+              View calendar <i data-lucide="arrow-right"></i>
+            </button>
+          </article>
+
+          <article class="stat-card stat-green">
+            <div class="stat-top">
+              <span class="stat-icon"><i data-lucide="images"></i></span>
+              <span class="stat-label">Gallery</span>
+            </div>
+            <strong class="stat-number" id="homeGalleryCount">0</strong>
+            <p>School gallery items</p>
+            <button class="stat-link" data-page="gallery">
+              Open gallery <i data-lucide="arrow-right"></i>
+            </button>
+          </article>
+        </div>
+
+        <!-- Main dashboard columns -->
+        <div class="dashboard-grid">
+
+          <section class="content-card notices-preview">
+            <div class="card-heading">
+              <div>
+                <span class="section-kicker">STAY INFORMED</span>
+                <h2>Latest Notices</h2>
+              </div>
+              <button class="text-button" data-page="notices">
+                View all <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+
+            <div id="homeNoticesList" class="preview-list">
+              <div class="empty-state">
+                <span class="empty-icon"><i data-lucide="bell-ring"></i></span>
+                <h3>No notices yet</h3>
+                <p>New school announcements will appear here.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-card upcoming-preview">
+            <div class="card-heading">
+              <div>
+                <span class="section-kicker">SAVE THE DATE</span>
+                <h2>Upcoming Events</h2>
+              </div>
+              <button class="text-button" data-page="events">
+                View all <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+
+            <div id="homeEventsList" class="preview-list">
+              <div class="empty-state">
+                <span class="empty-icon"><i data-lucide="calendar-days"></i></span>
+                <h3>No events listed</h3>
+                <p>Upcoming school events will appear here.</p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- School information strip -->
+        <section class="school-info-strip">
+          <div class="school-info-icon">
+            <i data-lucide="clock"></i>
+          </div>
+          <div class="school-info-text">
+            <h3>School Timings</h3>
+            <p>Monday to Saturday · 8:00 AM – 1:00 PM</p>
+          </div>
+          <button class="outline-button" data-page="contact">
+            Contact School <i data-lucide="arrow-right"></i>
+          </button>
+        </section>
+      </section>
+
+      <!-- NOTICE BOARD PAGE -->
+      <section class="page-section" id="page-notices" data-page-section="notices">
+        <div class="page-heading">
+          <div>
+            <span class="section-kicker">SCHOOL UPDATES</span>
+            <h2>Notice Board</h2>
+            <p>Stay updated with announcements and important information.</p>
+          </div>
+          <span class="page-heading-icon"><i data-lucide="megaphone"></i></span>
+        </div>
+
+        <div class="filter-bar">
+          <div class="search-box filter-search">
+            <i data-lucide="search"></i>
+            <input type="search" id="noticeSearch" placeholder="Search notices..." />
+          </div>
+
+          <select id="noticeCategory" aria-label="Filter notices by category">
+            <option value="all">All categories</option>
+            <option value="general">General</option>
+            <option value="academic">Academic</option>
+            <option value="holiday">Holiday</option>
+            <option value="urgent">Important</option>
+          </select>
+        </div>
+
+        <div class="notice-list" id="noticesList">
+          <div class="empty-state">
+            <span class="empty-icon"><i data-lucide="file-text"></i></span>
+            <h3>No notices available</h3>
+            <p>School announcements will be shown here when added.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOMEWORK PAGE -->
+      <section class="page-section" id="page-homework" data-page-section="homework">
+        <div class="page-heading">
+          <div>
+            <span class="section-kicker">LEARN EVERY DAY</span>
+            <h2>Homework</h2>
+            <p>Find classwork, assignments and homework shared by teachers.</p>
+          </div>
+          <span class="page-heading-icon"><i data-lucide="book-open-check"></i></span>
+        </div>
+
+        <div class="filter-bar">
+          <div class="search-box filter-search">
+            <i data-lucide="search"></i>
+            <input type="search" id="homeworkSearch" placeholder="Search homework..." />
+          </div>
+
+          <select id="homeworkClass" aria-label="Filter homework by class">
+            <option value="all">All classes</option>
+            <option value="Play">Play</option>
+            <option value="Nursery">Nursery</option>
+            <option value="LKG">LKG</option>
+            <option value="UKG">UKG</option>
+            <option value="1">Class 1</option>
+            <option value="2">Class 2</option>
+            <option value="3">Class 3</option>
+            <option value="4">Class 4</option>
+            <option value="5">Class 5</option>
+          </select>
+        </div>
+
+        <div class="homework-grid" id="homeworkList">
+          <div class="empty-state">
+            <span class="empty-icon"><i data-lucide="book-open"></i></span>
+            <h3>No homework available</h3>
+            <p>Assignments shared by teachers will appear here.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENTS AND HOLIDAYS PAGE -->
+      <section class="page-section" id="page-events" data-page-section="events">
+        <div class="page-heading">
+          <div>
+            <span class="section-kicker">PLAN AHEAD</span>
+            <h2>Events & Holidays</h2>
+            <p>Keep track of school activities, celebrations and holidays.</p>
+          </div>
+          <span class="page-heading-icon"><i data-lucide="calendar-days"></i></span>
+        </div>
+
+        <div class="event-summary">
+          <div>
+            <span class="event-summary-icon"><i data-lucide="calendar-check"></i></span>
+            <div>
+              <strong id="eventTotal">0</strong>
+              <span>Listed events</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="event-summary-icon holiday-icon"><i data-lucide="calendar-off"></i></span>
+            <div>
+              <strong id="holidayTotal">0</strong>
+              <span>Listed holidays</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-list" id="eventsList">
+          <div class="empty-state">
+            <span class="empty-icon"><i data-lucide="calendar-days"></i></span>
+            <h3>No events announced</h3>
+            <p>School events and holiday information will appear here.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHOTO GALLERY PAGE -->
+      <section class="page-section" id="page-gallery" data-page-section="gallery">
+        <div class="page-heading">
+          <div>
+            <span class="section-kicker">SCHOOL MOMENTS</span>
+            <h2>Photo Gallery</h2>
+            <p>Explore school activities, celebrations and special moments.</p>
+          </div>
+          <span class="page-heading-icon"><i data-lucide="images"></i></span>
+        </div>
+
+        <div class="gallery-toolbar">
+          <div class="gallery-filters" id="galleryFilters">
+            <button class="filter-chip active" data-gallery-filter="all">All Photos</button>
+            <button class="filter-chip" data-gallery-filter="activities">Activities</button>
+            <button class="filter-chip" data-gallery-filter="events">Events</button>
+            <button class="filter-chip" data-gallery-filter="classroom">Classroom</button>
+          </div>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <div class="empty-state">
+            <span class="empty-icon"><i data-lucide="image"></i></span>
+            <h3>Gallery coming soon</h3>
+            <p>School photos will be added here.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- STUDENT PROFILE PAGE -->
+      <section class="page-section" id="page-profile" data-page-section="profile">
+        <div class="page-heading">
+          <div>
+            <span class="section-kicker">YOUR SCHOOL DETAILS</span>
+            <h2>Student Profile</h2>
+            <p>View your student information on this device.</p>
+          </div>
+          <span class="page-heading-icon"><i data-lucide="user-round"></i></span>
+        </div>
+
+        <div class="profile-layout">
+          <section class="content-card profile-main-card">
+            <div class="profile-cover"></div>
+
+            <div class="profile-main-content">
+              <div class="large-avatar">
+                <i data-lucide="user-round"></i>
+              </div>
+
+              <div class="profile-name-row">
+                <div>
+                  <h3 id="profileDisplayName">Student Name</h3>
+                  <p id="profileDisplayClass">Class not set</p>
+                </div>
+                <span class="status-pill">
+                  <i data-lucide="check-circle"></i> Student
+                </span>
+              </div>
+
+              <div class="profile-divider"></div>
+
+              <form id="studentProfileForm" class="form-grid">
+                <label class="form-field">
+                  <span>Full Name</span>
+                  <input type="text" id="studentName" name="studentName" placeholder="Enter student name" />
+                </label>
+
+                <label class="form-field">
+                  <span>Class</span>
+                  <select id="studentClass" name="studentClass">
+                    <option value="">Select class</option>
+                    <option value="Play">Play</option>
+                    <option value="Nursery">Nursery</option>
+                    <option value="LKG">LKG</option>
+                    <option value="UKG">UKG</option>
+                    <option value="Class 1">Class 1</option>
+                    <option value="Class 2">Class 2</option>
+                    <option value="Class 3">Class 3</option>
+                    <option value="Class 4">Class 4</option>
+                    <option value="Class 5">Class 5</option>
+                  </select>
+                </label>
+
+                <label class="form-field">
+                  <span>Parent / Guardian Name</span>
+                  <input type="text" id="parentName" name="parentName" placeholder="Enter parent name" />
+                </label>
+
+                <label class="form-field">
+                  <span>Parent Contact Number</span>
+                  <input type="tel" id="parentPhone" name="parentPhone" placeholder="Enter contact number" />
+                </label>
+
+                <label class="form-field full-width">
+                  <span>Student ID (optional)</span>
+                  <input type="text" id="studentId" name="studentId" placeholder="Enter student ID if provided by school" />
+                </label>
+
+                <div class="form-actions full-width">
+                  <button class="primary-button" type="submit">
+                    <i data-lucide="save"></i> Save Profile
+                  </button>
+                  <p class="form-note">Only enter information you are comfortable storing on this device.</p>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <aside class="profile-side-column">
+            <section class="content-card profile-tip-card">
+              <span class="tip-icon"><i data-lucide="shield-check"></i></span>
+              <h3>Keep your information safe</h3>
+              <p>Use your school's official process for sensitive student records. This prototype does not verify student identity.</p>
+            </section>
+
+            <section class="content-card profile-shortcuts">
+              <h3>Quick Access</h3>
+              <button class="shortcut-row" data-page="homework">
+                <span class="shortcut-icon"><i data-lucide="book-open"></i></span>
+                <span>My Homework</span>
+                <i data-lucide="chevron-right"></i>
+              </button>
+              <button class="shortcut-row" data-page="notices">
+                <span class="shortcut-icon"><i data-lucide="megaphone"></i></span>
+                <span>School Notices</span>
+                <i data-lucide="chevron-right"></i>
+              </button>
+              <button class="shortcut-row" data-page="events">
+                <span class="shortcut-icon"><i data-lucide="calendar-days"></i></span>
+                <span>Events & Holidays</span>
+                <i data-lucide="chevron-right"></i>
+              </button>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ABOUT SCHOOL PAGE -->
+      <section class="page-section" id="page-about" data-page-section="about">
+        <div class="page-heading">
+          <div>
+            <span class="section-kicker">GET TO KNOW US</span>
+            <h2>About Our School</h2>
+            <p>A welcoming place for learning, discovery and growth.</p>
+          </div>
+          <span class="page-heading-icon"><i data-lucide="school"></i></span>
+        </div>
+
+        <section class="about-hero content-card">
+          <div class="about-logo-wrap">
+            <img src="schoollogo.jpeg" alt="Saarthi Play Public School logo" class="about-logo"
+              onerror="this.style.display='none'; document.getElementById('aboutLogoFallback').style.display='grid';" />
+            <div id="aboutLogoFallback" class="about-logo-fallback" style="display:none;">
+              <i data-lucide="school"></i>
+            </div>
+          </div>
+
+          <div class="about-copy">
+            <span class="section-kicker">SAARTHI PLAY PUBLIC SCHOOL</span>
+            <h2>Building a strong foundation for tomorrow.</h2>
+            <p>
+              Saarthi Play Public School aims to provide a supportive learning
+              environment where children can develop their knowledge, confidence,
+              creativity and good habits. Our school portal helps families stay
+              informed about homework, school notices, events and activities.
+            </p>
+            <button class="primary-button" data-page="contact">
+              Get in Touch <i data-lucide="arrow-right"></i>
+            </button>
+          </div>
+        </section>
+
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">SCHOOL INFORMATION</span>
+            <h2>At a Glance</h2>
+          </div>
+        </div>
+
+        <div class="about-facts-grid">
+          <article class="fact-card">
+            <span class="fact-icon"><i data-lucide="graduation-cap"></i></span>
+            <span class="fact-label">Classes</span>
+            <strong>Play to Class 5</strong>
+          </article>
+
+          <article class="fact-card">
+            <span class="fact-icon"><i data-lucide="book-open"></i></span>
+            <span class="fact-label">Medium</span>
+            <strong>English Medium</strong>
+          </article>
+
+          <article class="fact-card">
+            <span class="fact-icon"><i data-lucide="school"></i></span>
+            <span class="fact-label">Board</span>
+            <strong>CBSE</strong>
+          </article>
+
+          <article class="fact-card">
+            <span class="fact-icon"><i data-lucide="clock"></i></span>
+            <span class="fact-label">School Hours</span>
+            <strong>8:00 AM – 1:00 PM</strong>
+          </article>
+        </div>
+
+        <section class="content-card about-timings">
+          <div class="about-timings-icon"><i data-lucide="calendar-clock"></i></div>
+          <div>
+            <h3>School Working Days</h3>
+            <p>Monday to Saturday</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- CONTACT PAGE -->
+      <section class="page-section" id="page-contact" data-page-section="contact">
+        <div class="page-heading">
+          <div>
+            <span class="section-kicker">WE ARE HERE TO HELP</span>
+            <h2>Contact Us</h2>
+            <p>Reach the school for general enquiries and information.</p>
+          </div>
+          <span class="page-heading-icon"><i data-lucide="phone"></i></span>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-details">
+            <a href="tel:9818408808" class="contact-card content-card">
+              <span class="contact-icon contact-blue"><i data-lucide="phone"></i></span>
+              <span class="contact-copy">
+                <small>Call School Office</small>
+                <strong>9818408808</strong>
+                <span>Tap to call</span>
+              </span>
+              <i data-lucide="arrow-up-right" class="contact-arrow"></i>
+            </a>
+
+            <a href="tel:9205451438" class="contact-card content-card">
+              <span class="contact-icon contact-purple"><i data-lucide="phone-call"></i></span>
+              <span class="contact-copy">
+                <small>Additional Contact</small>
+                <strong>9205451438</strong>
+                <span>Tap to call</span>
+              </span>
+              <i data-lucide="arrow-up-right" class="contact-arrow"></i>
+            </a>
+
+            <a href="mailto:sumitbhardwaj755@gmail.com" class="contact-card content-card">
+              <span class="contact-icon contact-orange"><i data-lucide="mail"></i></span>
+              <span class="contact-copy">
+                <small>Email Address</small>
+                <strong>sumitbhardwaj755@gmail.com</strong>
+                <span>Tap to send an email</span>
+              </span>
+              <i data-lucide="arrow-up-right" class="contact-arrow"></i>
+            </a>
+
+            <a href="https://instagram.com/saarthiplaypublicschool25"
+               target="_blank" rel="noopener noreferrer" class="contact-card content-card">
+              <span class="contact-icon contact-pink"><i data-lucide="instagram"></i></span>
+              <span class="contact-copy">
+                <small>Instagram</small>
+                <strong>@saarthiplaypublicschool25</strong>
+                <span>Visit school Instagram</span>
+              </span>
+              <i data-lucide="external-link" class="contact-arrow"></i>
+            </a>
+          </div>
+
+          <section class="content-card address-card">
+            <span class="address-icon"><i data-lucide="map-pin"></i></span>
+            <span class="section-kicker">VISIT OUR SCHOOL</span>
+            <h3>School Address</h3>
+            <p>Kh.No-1893, Alipur Village,<br />Delhi, 110036</p>
+
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Kh.No-1893%2C+Alipur+Village%2C+Delhi+110036"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="primary-button map-button"
+            >
+              <i data-lucide="map-pin"></i> Open Maps
+            </a>
+
+            <div class="address-divider"></div>
+
+            <div class="office-hours">
+              <i data-lucide="clock"></i>
+              <div>
+                <strong>School Timings</strong>
+                <p>Monday – Saturday</p>
+                <p>8:00 AM – 1:00 PM</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section class="content-card contact-message-card">
+          <div class="contact-message-icon"><i data-lucide="message-circle"></i></div>
+          <div>
+            <h3>Have a question?</h3>
+            <p>Please contact the school office directly for admissions, school timings or student-related enquiries.</p>
+          </div>
+          <a href="tel:9818408808" class="outline-button">Call Now</a>
+        </section>
+      </section>
+
+      <!-- ADMIN DASHBOARD PAGE -->
+      <section class="page-section" id="page-admin" data-page-section="admin">
+        <div class="page-heading">
+          <div>
+            <span class="section-kicker">SCHOOL MANAGEMENT</span>
+            <h2>Admin Dashboard</h2>
+            <p>Manage school notices, homework, events and gallery entries.</p>
+          </div>
+          <span class="page-heading-icon"><i data-lucide="settings"></i></span>
+        </div>
+
+        <div class="admin-warning">
+          <i data-lucide="shield-alert"></i>
+          <div>
+            <strong>Prototype admin area</strong>
+            <p>This front-end page is not protected by secure administrator login. Do not publish it as a live admin system until authentication and a secure backend are connected.</p>
+          </div>
+        </div>
+
+        <div class="admin-stats-grid">
+          <article class="admin-stat-card">
+            <span class="admin-stat-icon"><i data-lucide="megaphone"></i></span>
+            <span>Notices</span>
+            <strong id="adminNoticeCount">0</strong>
+          </article>
+          <article class="admin-stat-card">
+            <span class="admin-stat-icon"><i data-lucide="book-open"></i></span>
+            <span>Homework</span>
+            <strong id="adminHomeworkCount">0</strong>
+          </article>
+          <article class="admin-stat-card">
+            <span class="admin-stat-icon"><i data-lucide="calendar-days"></i></span>
+            <span>Events</span>
+            <strong id="adminEventCount">0</strong>
+          </article>
+          <article class="admin-stat-card">
+            <span class="admin-stat-icon"><i data-lucide="images"></i></span>
+            <span>Gallery</span>
+            <strong id="adminGalleryCount">0</strong>
+          </article>
+        </div>
+
+        <div class="admin-layout">
+          <section class="content-card admin-form-card">
+            <div class="card-heading">
+              <div>
+                <span class="section-kicker">CREATE CONTENT</span>
+                <h2>Add School Update</h2>
+              </div>
+              <span class="admin-heading-icon"><i data-lucide="plus"></i></span>
+            </div>
+
+            <form id="adminContentForm" class="admin-form">
+              <label class="form-field">
+                <span>Content Type</span>
+                <select id="adminContentType" name="contentType" required>
+                  <option value="notice">Notice</option>
+                  <option value="homework">Homework</option>
+                  <option value="event">Event</option>
+                  <option value="holiday">Holiday</option>
+                  <option value="gallery">Gallery Image</option>
+                </select>
+              </label>
+
+              <label class="form-field">
+                <span>Title</span>
+                <input type="text" id="adminTitle" name="title" placeholder="Enter a title" required maxlength="120" />
+              </label>
+
+              <label class="form-field">
+                <span>Description</span>
+                <textarea id="adminDescription" name="description" rows="4" placeholder="Write the details..." required maxlength="2000"></textarea>
+              </label>
+
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>Class (if applicable)</span>
+                  <select id="adminClass" name="class">
+                    <option value="all">All Classes</option>
+                    <option value="Play">Play</option>
+                    <option value="Nursery">Nursery</option>
+                    <option value="LKG">LKG</option>
+                    <option value="UKG">UKG</option>
+                    <option value="1">Class 1</option>
+                    <option value="2">Class 2</option>
+                    <option value="3">Class 3</option>
+                    <option value="4">Class 4</option>
+                    <option value="5">Class 5</option>
+                  </select>
+                </label>
+
+                <label class="form-field">
+                  <span>Date</span>
+                  <input type="date" id="adminDate" name="date" />
+                </label>
+              </div>
+
+              <label class="form-field" id="adminCategoryField">
+                <span>Notice Category</span>
+                <select id="adminCategory" name="category">
+                  <option value="general">General</option>
+                  <option value="academic">Academic</option>
+                  <option value="holiday">Holiday</option>
+                  <option value="urgent">Important</option>
+                </select>
+              </label>
+
+              <label class="form-field" id="adminImageField">
+                <span>Image URL (for gallery)</span>
+                <input type="url" id="adminImageUrl" name="imageUrl" placeholder="https://example.com/photo.jpg" />
+              </label>
+
+              <button class="primary-button admin-submit" type="submit">
+                <i data-lucide="plus-circle"></i> Add Content
+              </button>
+
+              <p class="form-note">
+                Demo content may be saved only on this device. A shared school database is required for updates to reach other users.
+              </p>
+            </form>
+          </section>
+
+          <section class="content-card admin-manage-card">
+            <div class="card-heading">
+              <div>
+                <span class="section-kicker">CONTENT MANAGEMENT</span>
+                <h2>Recent Content</h2>
+              </div>
+              <button class="icon-button" id="refreshAdminContent" aria-label="Refresh content">
+                <i data-lucide="refresh-cw"></i>
+              </button>
+            </div>
+
+            <div id="adminContentList" class="admin-content-list">
+              <div class="empty-state">
+                <span class="empty-icon"><i data-lucide="clipboard-list"></i></span>
+                <h3>No content added</h3>
+                <p>Items you create will appear here.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="main-footer">
+        <div class="footer-brand">
+          <img src="schoollogo.jpeg" alt="" class="footer-logo"
+            onerror="this.style.display='none';" />
+          <div>
+            <strong>Saarthi Play Public School</strong>
+            <p>Learning today, building tomorrow.</p>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <button data-page="about">About</button>
+          <button data-page="contact">Contact</button>
+          <button data-page="notices">Notices</button>
+        </div>
+
+        <p class="copyright">
+          © <span id="currentYear"></span> Saarthi Play Public School
+        </p>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- Mobile bottom navigation -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav-item active" data-page="home">
+      <i data-lucide="house"></i>
+      <span>Home</span>
+    </button>
+
+    <button class="mobile-nav-item" data-page="notices">
+      <i data-lucide="megaphone"></i>
+      <span>Notices</span>
+    </button>
+
+    <button class="mobile-nav-item" data-page="homework">
+      <i data-lucide="book-open"></i>
+      <span>Homework</span>
+    </button>
+
+    <button class="mobile-nav-item" data-page="events">
+      <i data-lucide="calendar-days"></i>
+      <span>Events</span>
+    </button>
+
+    <button class="mobile-nav-item" data-page="profile">
+      <i data-lucide="user-round"></i>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+  <!-- Notification panel -->
+  <div class="notification-overlay" id="notificationOverlay" hidden>
+    <section class="notification-panel" role="dialog" aria-modal="true" aria-labelledby="notificationTitle">
+      <div class="notification-panel-heading">
+        <div>
+          <span class="section-kicker">STAY UPDATED</span>
+          <h2 id="notificationTitle">Notifications</h2>
+        </div>
+        <button class="icon-button" id="closeNotifications" aria-label="Close notifications">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div id="notificationList" class="notification-list">
+        <div class="empty-state">
+          <span class="empty-icon"><i data-lucide="bell"></i></span>
+          <h3>You're all caught up</h3>
+          <p>New notices will appear here when available.</p>
+        </div>
+      </div>
+
+      <button class="outline-button notification-view-all" data-page="notices">
+        Go to Notice Board <i data-lucide="arrow-right"></i>
+      </button>
+    </section>
+  </div>
+
+  <!-- Toast messages -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Initialize icons -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      const year = document.getElementById("currentYear");
+      if (year) year.textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>
